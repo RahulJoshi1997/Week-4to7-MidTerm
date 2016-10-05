@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//This does nothing else other than moving the character and making it look around
+
 public class PlayerControl : MonoBehaviour {
 
 	CharacterController cControl;
