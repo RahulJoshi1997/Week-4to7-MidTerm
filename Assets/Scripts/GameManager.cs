@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour {
 	public Text messages;
 
 	public float difficulty = 0f;
-	bool complete;
+	public bool enableQTE;
+	bool completedQTE;
 
+	public GameObject[] events;
 	//Use this to track how many events the player has completed.
 	public int playerEventNumber = 0;
 
@@ -21,20 +23,30 @@ public class GameManager : MonoBehaviour {
 		QTE = QTE.GetComponent<Slider> ();
 
 		overlayQTE.enabled = false;
+		enableQTE = false;
 		messages.text = "";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//Make the QTEs work
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			QTE.value += 0.1f;
-		}
-		QTE.value -= difficulty * Time.deltaTime;
+		events [playerEventNumber].SetActive (true);
 
-		if (QTE.value >= 0.98) {
-			overlayQTE.enabled = false;
-			playerEventNumber ++;
+		//Make the QTEs work
+		if (enableQTE == true) {
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				QTE.value += 0.1f;
+			}
+			QTE.value -= difficulty * Time.deltaTime;
+
+			if (QTE.value >= 0.98) {
+				enableQTE = false;
+				overlayQTE.enabled = false;
+				QTE.value = 0;
+				events [playerEventNumber].SetActive (false);
+
+				playerEventNumber++;
+				messages.text = "";
+			}
 		}
 	}
 }
