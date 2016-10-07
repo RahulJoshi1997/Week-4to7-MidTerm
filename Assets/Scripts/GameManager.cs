@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public Canvas overlayQTE;
+	public Canvas endCanvas;
 	public Slider QTE;
 	public Text messages;
 
 	public float difficulty = 0f;
 	public bool enableQTE;
-	bool completedQTE;
 
 	public GameObject[] events;
 	//Use this to track how many events the player has completed.
@@ -22,18 +22,26 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		QTE = QTE.GetComponent<Slider> ();
 
+		endCanvas.enabled = false;
 		overlayQTE.enabled = false;
 		enableQTE = false;
 		messages.text = "";
+
+		Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		events [playerEventNumber].SetActive (true);
+		if (playerEventNumber <= 23) {
+			//Enable the QTEtriggers that the player needs to interact with
+			events [playerEventNumber].SetActive (true);
+		} else {
+			endCanvas.enabled = true;
+		}
 
 		//Make the QTEs work
 		if (enableQTE == true) {
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if (Input.GetKeyDown (KeyCode.Space) || Input.GetKey (KeyCode.Q)) {
 				QTE.value += 0.1f;
 			}
 			QTE.value -= difficulty * Time.deltaTime;
@@ -42,10 +50,14 @@ public class GameManager : MonoBehaviour {
 				enableQTE = false;
 				overlayQTE.enabled = false;
 				QTE.value = 0;
-				events [playerEventNumber].SetActive (false);
+
+				if (playerEventNumber != 6 && playerEventNumber != 13
+					&& playerEventNumber != 17 && playerEventNumber != 19) {
+					events [playerEventNumber].SetActive (false);
+					messages.text = "";
+				}
 
 				playerEventNumber++;
-				messages.text = "";
 			}
 		}
 	}
