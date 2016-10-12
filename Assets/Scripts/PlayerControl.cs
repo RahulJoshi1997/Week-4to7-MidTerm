@@ -9,8 +9,8 @@ public class PlayerControl : MonoBehaviour {
 
 	CharacterController cControl;
 
-	const float lookSpeed = 500;
-	const float moveSpeed = 500;
+	const float lookSpeed = 250;
+	const float moveSpeed = 250;
 
 	// Use this for initialization
 	void Start () {

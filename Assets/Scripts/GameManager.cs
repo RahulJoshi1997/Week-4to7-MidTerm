@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	public Canvas endCanvas;
 	public Slider QTE;
 	public Text messages;
+	public Text info;
 
 	public float difficulty = 0f;
 	public bool enableQTE;
@@ -24,8 +25,11 @@ public class GameManager : MonoBehaviour {
 
 		endCanvas.enabled = false;
 		overlayQTE.enabled = false;
+
 		enableQTE = false;
+
 		messages.text = "";
+		info.text = "";
 
 		Cursor.visible = false;
 	}
@@ -56,6 +60,7 @@ public class GameManager : MonoBehaviour {
 					events [playerEventNumber].SetActive (false);
 					messages.text = "";
 				}
+				info.text = "";
 
 				playerEventNumber++;
 			}
