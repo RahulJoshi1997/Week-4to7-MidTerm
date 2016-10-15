@@ -88,7 +88,7 @@ public class TriggersQTE : MonoBehaviour {
 			infoQTE = "School";
 		} else if (this.name == "18-Maryland High School") {
 			diff = 0.25f;
-			textQTE = "I had no you moved here, Raul.\nYou fit right in.";
+			textQTE = "I had no idea you moved here, Raul.\nYou fit right in.";
 			infoQTE = "High School";
 		} else if (this.name == "19-Maryland Family") {
 			diff = 0.4f;
