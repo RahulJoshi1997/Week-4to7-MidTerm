@@ -20,8 +20,9 @@ public class PlayerControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//No moving once game ends
-		if (gm.playerEventNumber <= 23) {
+		//No moving before the game starts and once it ends. Also no moving once QTE is up.
+		if (gm.startCanvas.enabled == false && gm.endCanvas.enabled==false
+			&& gm.overlayQTE.enabled == false) {
 			//Getting inputs
 			float moveX = Input.GetAxis ("Horizontal");
 			float moveZ = Input.GetAxis ("Vertical");
