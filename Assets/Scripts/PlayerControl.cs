@@ -27,9 +27,9 @@ public class PlayerControl : MonoBehaviour {
 			float moveX = Input.GetAxis ("Horizontal");
 			float moveZ = Input.GetAxis ("Vertical");
 			//To look left an right, rotate about the Y axis
-			float lookX = Input.GetAxis ("Mouse Y") * Time.deltaTime * lookSpeed;
+			float lookX = -Input.GetAxis ("Mouse Y") * Time.deltaTime * lookSpeed;
 			//To look up and down, rotate about the X axis
-			float lookY = -Input.GetAxis ("Mouse X") * Time.deltaTime * lookSpeed;
+			float lookY = Input.GetAxis ("Mouse X") * Time.deltaTime * lookSpeed;
 
 			//Move the character
 			cControl.SimpleMove ((transform.forward * moveZ + transform.right * moveX) * Time.deltaTime * moveSpeed);
