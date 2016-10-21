@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
 	public Canvas endCanvas;
 	//The QTE Slider
 	public Slider QTE;
+	//The bit of text the contextualizes each QTE a bit.
+	public Text contextQTE;
 	//The thing that displays the QTE specific text of what people say to you along with the background
 	//image that makes the text legible.
 	public Text messages;
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour {
 		overlayQTE.enabled = false;
 
 		messages.text = "";
+		contextQTE.text = "";
 		whiteBackground.enabled = false;
 
 		Cursor.visible = false;
