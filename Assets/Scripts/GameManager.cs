@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour {
 		//TriggersQTE script enables the UI. This happens when the player walks into the trigger colider.
 		if (overlayQTE.enabled == true) {
 			//Increase Slider by a discrete amount per key press.
-			if (Input.GetKeyDown (KeyCode.Space) || Input.GetKey (KeyCode.Q)) {
+			if (Input.GetKeyDown (KeyCode.Space)) {
 				QTE.value += 0.1f;
 			}
 			//Reduce the slider at a constant, frame independent, speed.
